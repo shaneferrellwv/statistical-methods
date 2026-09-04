@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EN605631_Assignment1_Hints.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="en605631--assignment-1-hints--ross-ch1-references--starter-r-code">EN.605.631 — Assignment 1: Hints + Ross Ch.1 References + Starter R Code</h1>
+<p>Hello class: This guide provides hints to this weeks assignment from <strong>Ross, <em>A First Course in Probability</em>, 8th ed., Chapter 1</strong>, along with short starter-code snippets in <strong>base R</strong> for each problem.</p>
+<hr>
+<h3 id="problem-1--the-basic-principle-product-rule">Problem 1 — The Basic Principle (Product Rule)</h3>
+<ul>
+<li>§1.2 Basic Principle of Counting (pp. 2–3)</li>
+<li>Examples 2a–2e</li>
+</ul>
+<p><strong>Strategy hints:</strong></p>
+<ul>
+<li>Break the scenario into sequential, independent stages; multiply counts across stages.</li>
+<li>If stages depend on earlier choices (without replacement), update the counts accordingly.</li>
+<li>Sanity-check with a tiny simulated example to confirm the count pattern.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Product Rule / Basic Counting</span>
+<span class="hljs-comment"># Think in phases; multiply counts across independent stages.</span>
+n1 &lt;- <span class="hljs-number">3</span>   <span class="hljs-comment"># e.g., choices for stage 1</span>
+n2 &lt;- <span class="hljs-number">4</span>   <span class="hljs-comment"># e.g., choices for stage 2</span>
+total &lt;- n1 * n2
+total
+</div></code></pre>
+<hr>
+<h3 id="problem-2--permutations-withwithout-indistinguishables">Problem 2 — Permutations (with/without indistinguishables)</h3>
+<ul>
+<li>§1.3 Permutations (pp. 3–5)</li>
+<li>Indistinguishable items (Example 3d)</li>
+</ul>
+<p><strong>Strategy hints:</strong></p>
+<ul>
+<li>When order matters and all items are distinct, start with <code>n!</code>.</li>
+<li>If there are repeated types, divide by the factorial of each multiplicity.</li>
+<li>For 'blocks stay together', permute blocks, then permute within blocks.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Permutations and factorial</span>
+n &lt;- <span class="hljs-number">10</span>
+total_perm &lt;- factorial(n)
+<span class="hljs-comment"># With indistinguishables: n!/(n1!*n2!*...)</span>
+n1 &lt;- <span class="hljs-number">4</span>; n2 &lt;- <span class="hljs-number">3</span>; n3 &lt;- <span class="hljs-number">2</span>; n4 &lt;- <span class="hljs-number">1</span>
+perms_indist &lt;- factorial(<span class="hljs-number">10</span>) / (factorial(n1)*factorial(n2)*factorial(n3)*factorial(n4))
+c(total_perm, perms_indist)
+</div></code></pre>
+<hr>
+<h3 id="problem-3--combinations--identities">Problem 3 — Combinations &amp; Identities</h3>
+<ul>
+<li>§1.4 Combinations (pp. 5–8)</li>
+<li>Identity (4.1)</li>
+</ul>
+<p><strong>Strategy hints:</strong></p>
+<ul>
+<li>When order does <strong>not</strong> matter, use <code>choose(n, r)</code>.</li>
+<li>For multi-category committees, multiply independent <code>choose()</code> counts across categories.</li>
+<li>Watch out for exclusions (e.g., two people who cannot serve together): subtract those cases.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Combinations</span>
+n &lt;- <span class="hljs-number">20</span>; r &lt;- <span class="hljs-number">3</span>
+choose(n, r)  <span class="hljs-comment"># number of r-combinations from n</span>
+<span class="hljs-comment"># With groups, multiply choose() results across independent selections</span>
+choose(<span class="hljs-number">5</span>, <span class="hljs-number">2</span>) * choose(<span class="hljs-number">7</span>, <span class="hljs-number">3</span>)
+</div></code></pre>
+<hr>
+<h3 id="problem-4--binomial-theorem-algebra-code-and-coefficients">Problem 4 — Binomial Theorem: Algebra, Code, and Coefficients</h3>
+<ul>
+<li>§1.4 Binomial Theorem (eq. 4.2, pp. 7–8)</li>
+<li>Examples 4d–4e</li>
+</ul>
+<p><strong>Strategy hints:</strong></p>
+<ul>
+<li>Recall <code>(x + y)^n = sum_{k=0}^n choose(n,k) x^k y^{n-k}</code>.</li>
+<li>To verify identities numerically, pick concrete <code>x, y</code> and compare both sides.</li>
+<li>Coefficients follow Pascal’s rule (Identity 4.1).</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Binomial coefficients and theorem</span>
+n &lt;- <span class="hljs-number">6</span>
+k &lt;- <span class="hljs-number">0</span>:n
+coeffs &lt;- choose(n, k)
+coeffs
+<span class="hljs-comment"># Expand (x + y)^n symbolically? Use numeric check:</span>
+x &lt;- <span class="hljs-number">2</span>; y &lt;- <span class="hljs-number">3</span>
+sum(coeffs * x^k * y^(n-k))
+</div></code></pre>
+<hr>
+<h3 id="problem-5--multinomial-coefficients--theorem">Problem 5 — Multinomial Coefficients &amp; Theorem</h3>
+<ul>
+<li>§1.5 Multinomial Coefficients (pp. 9–11)</li>
+<li>Multinomial Theorem</li>
+</ul>
+<p><strong>Strategy hints:</strong></p>
+<ul>
+<li>Partitioning <code>n</code> distinct items into labeled groups of sizes <code>n1,...,nr</code> uses <code>n!/(n1!...nr!)</code>.</li>
+<li>Relate to permutations with indistinguishable labels to build intuition.</li>
+<li>Check edge cases: some <code>ni</code> can be zero; the formula still applies.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Multinomial coefficient</span>
+n1 &lt;- <span class="hljs-number">5</span>; n2 &lt;- <span class="hljs-number">2</span>; n3 &lt;- <span class="hljs-number">3</span>
+n &lt;- n1 + n2 + n3
+multinom_coeff &lt;- factorial(n) / (factorial(n1)*factorial(n2)*factorial(n3))
+multinom_coeff
+<span class="hljs-comment"># Distribution across labeled groups can be simulated if needed</span>
+</div></code></pre>
+<hr>
+<h3 id="problem-6--stars-and-bars-integer-solutions">Problem 6 — Stars and Bars (Integer Solutions)</h3>
+<ul>
+<li>§1.6 Number of Integer Solutions (pp. 12–15)</li>
+<li>Stars-and-bars (Prop. 6.1–6.2)</li>
+</ul>
+<p><strong>Strategy hints:</strong></p>
+<ul>
+<li>Nonnegative integer solutions of <code>x1+...+xr = n</code> count is <code>choose(n+r-1, r-1)</code>.</li>
+<li>Positive solutions: shift by 1 or use <code>choose(n-1, r-1)</code>.</li>
+<li>Translate 'at least k between items' into shifted constraints.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Stars and Bars (nonnegative integer solutions)</span>
+<span class="hljs-comment"># Number of solutions to x1 + ... + xr = n is choose(n + r - 1, r - 1)</span>
+n &lt;- <span class="hljs-number">20</span>; r &lt;- <span class="hljs-number">4</span>
+choose(n + r - <span class="hljs-number">1</span>, r - <span class="hljs-number">1</span>)
+<span class="hljs-comment"># Positive solutions: choose(n - 1, r - 1)</span>
+choose(n - <span class="hljs-number">1</span>, r - <span class="hljs-number">1</span>)
+</div></code></pre>
+<hr>
+<h3 id="problem-7--case-study-functional-antenna-system">Problem 7 — Case Study: Functional Antenna System</h3>
+<ul>
+<li>§1.1 Introduction (antenna system, p.1)</li>
+<li>§1.4 Example 4c; §1.6 Example 6d</li>
+</ul>
+<p><strong>Strategy hints:</strong></p>
+<ul>
+<li>Model feasible patterns via 'gaps' between functional units.</li>
+<li>Count placements of defectives among <code>n-m+1</code> gaps when no two are adjacent.</li>
+<li>Cross-check with a tiny enumeration for small <code>n</code> and <code>m</code>.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Antenna system (no two defectives consecutive)</span>
+n &lt;- <span class="hljs-number">10</span>  <span class="hljs-comment"># total antennas</span>
+m &lt;- <span class="hljs-number">3</span>   <span class="hljs-comment"># defective</span>
+<span class="hljs-comment"># Count of valid sequences with indistinguishable units:</span>
+valid &lt;- choose(n - m + <span class="hljs-number">1</span>, m)
+valid
+<span class="hljs-comment"># Empirical check with labeled antennas (small n only)</span>
+<span class="hljs-comment"># (Optional) brute-force for n&lt;=10 using combinat::permn or custom generation</span>
+</div></code></pre>
+<hr>
+<h3 id="problem-8--reflection--proof-sketches">Problem 8 — Reflection &amp; Proof Sketches</h3>
+<ul>
+<li>§1.4–§1.6 (binomial/multinomial + stars-and-bars)</li>
+</ul>
+<p><strong>Strategy hints:</strong></p>
+<ul>
+<li>Break the scenario into sequential, independent stages; multiply counts across stages.</li>
+<li>If stages depend on earlier choices (without replacement), update the counts accordingly.</li>
+<li>Sanity-check with a tiny simulated example to confirm the count pattern.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Product Rule / Basic Counting</span>
+<span class="hljs-comment"># Think in phases; multiply counts across independent stages.</span>
+n1 &lt;- <span class="hljs-number">3</span>   <span class="hljs-comment"># e.g., choices for stage 1</span>
+n2 &lt;- <span class="hljs-number">4</span>   <span class="hljs-comment"># e.g., choices for stage 2</span>
+total &lt;- n1 * n2
+total
+</div></code></pre>
+<hr>
+
+</body>
+</html>
