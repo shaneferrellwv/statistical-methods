@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EN605631_Chapter2_Hints_Expanded.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="en605631--chapter-2-assignment-hints--ross-ch2-references--starter-r-code">EN.605.631 — Chapter 2 Assignment: Hints + Ross Ch.2 References + Starter R Code</h1>
+<p>This guide provides strategic hints for each problem in the <strong>Chapter 2</strong> assignment, with references to Ross, <em>A First Course in Probability</em>, 8th ed., <strong>Chapter 2</strong> (uploaded PDF) and minimal <strong>base R</strong> starter code. See the references inline. [Ross Ch.2 PDF cited] 【Ch.2】</p>
+<hr>
+<h3 id="problem-1--sample-spaces-events-and-set-algebra-10-pts">Problem 1 — Sample spaces, events, and set algebra (10 pts)</h3>
+<p><strong>Ross Chapter 2 references</strong> (read before solving):</p>
+<ul>
+<li>§2.2 Sample Space &amp; Events (set operations, complements, Venn diagrams) 【Ch.2】
+<strong>Strategy hints:</strong></li>
+<li>Start by writing down the <strong>sample space</strong> explicitly (finite list via <code>expand.grid</code> or described algebraically).</li>
+<li>Define events using set-builder notation, then implement with filters on your data frame.</li>
+<li>Use <strong>union/intersection/complement</strong> identities to simplify; confirm DeMorgan’s laws by counting outcomes on both sides.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Sample spaces, events, set algebra</span>
+<span class="hljs-comment"># Example sample spaces</span>
+S_coins &lt;- expand.grid(c(<span class="hljs-string">"H"</span>,<span class="hljs-string">"T"</span>), c(<span class="hljs-string">"H"</span>,<span class="hljs-string">"T"</span>))
+S_dice  &lt;- expand.grid(<span class="hljs-number">1</span>:<span class="hljs-number">6</span>, <span class="hljs-number">1</span>:<span class="hljs-number">6</span>)
+names(S_dice) &lt;- c(<span class="hljs-string">"d1"</span>,<span class="hljs-string">"d2"</span>)
+
+<span class="hljs-comment"># Define events as subsets (use logical conditions)</span>
+E &lt;- subset(S_dice, d1 + d2 == <span class="hljs-number">7</span>)   <span class="hljs-comment"># sum is 7</span>
+<span class="hljs-literal">F</span> &lt;- subset(S_dice, d1 == <span class="hljs-number">1</span> | d2 == <span class="hljs-number">1</span>)  <span class="hljs-comment"># at least one '1'</span>
+
+<span class="hljs-comment"># Set operations using base R on rows</span>
+<span class="hljs-comment"># Convert rows to strings to use setops (simple and robust for starters)</span>
+rows &lt;- <span class="hljs-keyword">function</span>(df) apply(df, <span class="hljs-number">1</span>, paste, collapse=<span class="hljs-string">","</span>)
+U  &lt;- union(rows(E), rows(<span class="hljs-literal">F</span>))        <span class="hljs-comment"># union</span>
+I  &lt;- intersect(rows(E), rows(<span class="hljs-literal">F</span>))    <span class="hljs-comment"># intersection</span>
+Ec &lt;- setdiff(rows(S_dice), rows(E)) <span class="hljs-comment"># complement relative to S</span>
+
+length(U); length(I); length(Ec) / nrow(S_dice)
+
+<span class="hljs-comment"># (Optional) Verify DeMorgan numerically:</span>
+left  &lt;- setdiff(rows(S_dice), union(rows(E), rows(<span class="hljs-literal">F</span>)))
+right &lt;- intersect(setdiff(rows(S_dice), rows(E)), setdiff(rows(S_dice), rows(<span class="hljs-literal">F</span>)))
+identical(sort(left), sort(right))
+</div></code></pre>
+<hr>
+<h3 id="problem-2--axioms-and-finite-additivity-12-pts">Problem 2 — Axioms and finite additivity (12 pts)</h3>
+<p><strong>Ross Chapter 2 references</strong> (read before solving):</p>
+<ul>
+<li>§2.3 Axioms of Probability (Axioms 1–3, P(∅)=0) 【Ch.2】
+<strong>Strategy hints:</strong></li>
+<li>Construct a <strong>finite probability measure</strong> by tabulating outcomes and assigning probabilities that sum to 1.</li>
+<li>Check the axioms directly: (i) bounds 0–1; (ii) <code>P(S)=1</code>; (iii) <strong>finite additivity</strong> on disjoint events.</li>
+<li>Show <code>P(∅)=0</code> from Axioms 2–3 and verify complement rule <code>P(E^c)=1−P(E)</code>.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Axioms &amp; finite additivity</span>
+<span class="hljs-comment"># Build a finite probability space {ω_i, p_i}</span>
+S &lt;- data.frame(omega = <span class="hljs-number">1</span>:<span class="hljs-number">6</span>, p = c(<span class="hljs-number">0.1</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.15</span>, <span class="hljs-number">0.25</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.1</span>))  <span class="hljs-comment"># example</span>
+
+P &lt;- <span class="hljs-keyword">function</span>(A) sum(S$p[S$omega %<span class="hljs-keyword">in</span>% A])  <span class="hljs-comment"># probability of event A (as a set of outcomes)</span>
+
+<span class="hljs-comment"># Check axioms</span>
+P(<span class="hljs-number">1</span>:<span class="hljs-number">6</span>)                         <span class="hljs-comment"># Axiom 2: should be 1</span>
+P(integer(<span class="hljs-number">0</span>))                  <span class="hljs-comment"># P(∅) should be 0</span>
+A &lt;- c(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>); B &lt;- c(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>)       <span class="hljs-comment"># disjoint events</span>
+P(union(A,B)); P(A) + P(B)     <span class="hljs-comment"># Axiom 3 for disjoint unions</span>
+
+<span class="hljs-comment"># Complement</span>
+Ac &lt;- setdiff(S$omega, A)
+P(A) + P(Ac)                   <span class="hljs-comment"># should be 1</span>
+</div></code></pre>
+<hr>
+<h3 id="problem-3--inclusion%E2%80%93exclusion-and-booles-inequality-14-pts">Problem 3 — Inclusion–exclusion and Boole’s inequality (14 pts)</h3>
+<p><strong>Ross Chapter 2 references</strong> (read before solving):</p>
+<ul>
+<li>§2.4 Some Simple Propositions (union formula; inclusion–exclusion; Boole’s inequality) 【Ch.2】
+<strong>Strategy hints:</strong></li>
+<li>Derive <code>P(E∪F)</code> via <strong>Venn regions</strong> or by algebra: <code>P(E)+P(F)−P(EF)</code>.</li>
+<li>For three sets, write all seven regions and add/subtract carefully to get <strong>inclusion–exclusion</strong>.</li>
+<li>Use <strong>Boole’s inequality</strong> as a quick upper bound; test tightness on your chosen example.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Inclusion–Exclusion &amp; Boole's inequality</span>
+S &lt;- <span class="hljs-number">1</span>:<span class="hljs-number">100</span>  <span class="hljs-comment"># toy finite space with equal probabilities</span>
+E &lt;- which(S %% <span class="hljs-number">2</span> == <span class="hljs-number">0</span>)   <span class="hljs-comment"># even</span>
+<span class="hljs-literal">F</span> &lt;- which(S %% <span class="hljs-number">3</span> == <span class="hljs-number">0</span>)   <span class="hljs-comment"># multiples of 3</span>
+G &lt;- which(S %% <span class="hljs-number">5</span> == <span class="hljs-number">0</span>)   <span class="hljs-comment"># multiples of 5</span>
+
+P &lt;- <span class="hljs-keyword">function</span>(A) length(A)/length(S)
+lhs2 &lt;- P(union(E,<span class="hljs-literal">F</span>))
+rhs2 &lt;- P(E) + P(<span class="hljs-literal">F</span>) - P(intersect(E,<span class="hljs-literal">F</span>))
+c(lhs2=lhs2, rhs2=rhs2, equal=abs(lhs2-rhs2) &lt; <span class="hljs-number">1e-12</span>)
+
+<span class="hljs-comment"># Three-set inclusion–exclusion</span>
+EUF &lt;- union(E,<span class="hljs-literal">F</span>)
+lhs3 &lt;- P(union(EUF, G))
+rhs3 &lt;- P(E) + P(<span class="hljs-literal">F</span>) + P(G) - P(intersect(E,<span class="hljs-literal">F</span>)) - P(intersect(E,G)) - P(intersect(<span class="hljs-literal">F</span>,G)) + P(Reduce(intersect, list(E,<span class="hljs-literal">F</span>,G)))
+c(lhs3=lhs3, rhs3=rhs3, equal=abs(lhs3-rhs3) &lt; <span class="hljs-number">1e-12</span>)
+
+<span class="hljs-comment"># Boole's inequality upper bound</span>
+upper &lt;- P(E) + P(<span class="hljs-literal">F</span>) + P(G)
+c(P_union=lhs3, upper_bound=upper)
+</div></code></pre>
+<hr>
+<h3 id="problem-4--equally-likely-outcomes-classical-models-12-pts">Problem 4 — Equally likely outcomes: classical models (12 pts)</h3>
+<p><strong>Ross Chapter 2 references</strong> (read before solving):</p>
+<ul>
+<li>§2.5 Equally Likely Outcomes (classical models, counting-to-probability) 【Ch.2】
+<strong>Strategy hints:</strong></li>
+<li>When outcomes are <strong>equally likely</strong>, compute probability as <code>|E|/|S|</code>. Focus on counting <code>|E|</code>.</li>
+<li>Break complex counts into stages using the <strong>basic principle of counting</strong>; use <code>choose()</code> and <code>factorial()</code>.</li>
+<li>Cross-check an analytic result with a quick <strong>simulation</strong> using <code>sample()</code> or <code>expand.grid()</code>.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Equally likely outcomes (classical models)</span>
+<span class="hljs-comment"># Dice example</span>
+S_dice &lt;- expand.grid(<span class="hljs-number">1</span>:<span class="hljs-number">6</span>, <span class="hljs-number">1</span>:<span class="hljs-number">6</span>); names(S_dice) &lt;- c(<span class="hljs-string">"d1"</span>,<span class="hljs-string">"d2"</span>)
+P &lt;- <span class="hljs-keyword">function</span>(A_rows) nrow(A_rows)/nrow(S_dice)
+A &lt;- subset(S_dice, d1 + d2 == <span class="hljs-number">7</span>)
+P(A)  <span class="hljs-comment"># 1/6</span>
+
+<span class="hljs-comment"># Cards example (combinatorial counts)</span>
+choose(<span class="hljs-number">52</span>,<span class="hljs-number">5</span>)                 <span class="hljs-comment"># total 5-card hands</span>
+<span class="hljs-comment"># Probability of a flush (ignoring straight flush)</span>
+<span class="hljs-number">4</span>*choose(<span class="hljs-number">13</span>,<span class="hljs-number">5</span>) / choose(<span class="hljs-number">52</span>,<span class="hljs-number">5</span>)
+
+<span class="hljs-comment"># Sampling without replacement using base R</span>
+deck &lt;- expand.grid(value=c(<span class="hljs-number">2</span>:<span class="hljs-number">10</span>,<span class="hljs-string">"J"</span>,<span class="hljs-string">"Q"</span>,<span class="hljs-string">"K"</span>,<span class="hljs-string">"A"</span>), suit=c(<span class="hljs-string">"S"</span>,<span class="hljs-string">"H"</span>,<span class="hljs-string">"D"</span>,<span class="hljs-string">"C"</span>))
+deal5 &lt;- deck[sample(<span class="hljs-number">1</span>:nrow(deck), size=<span class="hljs-number">5</span>, replace=<span class="hljs-literal">FALSE</span>), ]
+deal5
+</div></code></pre>
+<hr>
+<h3 id="problem-5--matching-derangements-and-surprising-probabilities-12-pts">Problem 5 — Matching (derangements) and “surprising” probabilities (12 pts)</h3>
+<p><strong>Ross Chapter 2 references</strong> (read before solving):</p>
+<ul>
+<li>§2.5 Equally Likely Outcomes — Matching Problem (Example 5m) 【Ch.2】</li>
+<li>§2.5 Birthday problem (Example 5i) 【Ch.2】
+<strong>Strategy hints:</strong></li>
+<li>For the matching (hats) problem, use <strong>inclusion–exclusion</strong> to obtain <code>!n/n! = \sum_{k=0}^n (-1)^k/k!</code>.</li>
+<li>Note the limiting behavior <code>!n/n! → e^{-1}</code>; compare exact values to <code>1/e</code>.</li>
+<li>For 'surprising' cases (e.g., birthdays), compute the <strong>complement</strong> (no matches) and subtract from 1.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Matching (derangements) &amp; surprising probabilities</span>
+<span class="hljs-comment"># Exact derangement probability for N hats</span>
+derangement_prob &lt;- <span class="hljs-keyword">function</span>(N) {
+  <span class="hljs-comment"># P(no one gets own hat) = !N / N! = sum_{k=0}^N (-1)^k/k!</span>
+  sum(sapply(<span class="hljs-number">0</span>:N, <span class="hljs-keyword">function</span>(k) (-<span class="hljs-number">1</span>)^k/factorial(k)))
+}
+sapply(c(<span class="hljs-number">5</span>,<span class="hljs-number">10</span>,<span class="hljs-number">20</span>), derangement_prob)
+
+<span class="hljs-comment"># Approximation ~ 1/e</span>
+<span class="hljs-number">1</span>/exp(<span class="hljs-number">1</span>)
+
+<span class="hljs-comment"># Birthday problem: probability at least one match among n birthdays</span>
+birthday_at_least_one_match &lt;- <span class="hljs-keyword">function</span>(n, days=<span class="hljs-number">365</span>) {
+  <span class="hljs-number">1</span> - prod((days - <span class="hljs-number">0</span>:(n-<span class="hljs-number">1</span>)) / days)
+}
+sapply(c(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">23</span>,<span class="hljs-number">30</span>), birthday_at_least_one_match)
+</div></code></pre>
+<hr>
+<h3 id="problem-6--continuity-of-probability-monotone-limits-12-pts">Problem 6 — Continuity of probability (monotone limits) (12 pts)</h3>
+<p><strong>Ross Chapter 2 references</strong> (read before solving):</p>
+<ul>
+<li>§2.6 Probability as a Continuous Set Function (monotone continuity) 【Ch.2】
+<strong>Strategy hints:</strong></li>
+<li>Pick a natural <strong>increasing sequence</strong> of events (e.g., 'at least one head in first n tosses') and compute <code>P(E_n)</code>; take the limit.</li>
+<li>Similarly, for a <strong>decreasing sequence</strong> (e.g., 'no head in first n tosses'), show <code>P(F_n)→P(∩F_n)</code>.</li>
+<li>Support your algebra with a short <strong>simulation</strong> to visualize convergence.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Continuity of probability (monotone limits)</span>
+<span class="hljs-comment"># Increasing events: En = 'at least one head in first n tosses'</span>
+n &lt;- <span class="hljs-number">10</span>
+P_En &lt;- <span class="hljs-number">1</span> - (<span class="hljs-number">1</span>/<span class="hljs-number">2</span>)^ (<span class="hljs-number">1</span>:n)   <span class="hljs-comment"># exact for fair coin</span>
+P_En
+
+<span class="hljs-comment"># Decreasing events: Fn = 'no head in first n tosses'</span>
+P_Fn &lt;- (<span class="hljs-number">1</span>/<span class="hljs-number">2</span>)^(<span class="hljs-number">1</span>:n)
+P_Fn
+
+<span class="hljs-comment"># Monte Carlo check for En up to n=20</span>
+set.seed(<span class="hljs-number">631</span>)
+is_one_head_in_n &lt;- <span class="hljs-keyword">function</span>(n, trials=<span class="hljs-number">10000</span>) {
+  mean(replicate(trials, any(sample(c(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>), size=n, replace=<span class="hljs-literal">TRUE</span>) == <span class="hljs-number">1</span>)))
+}
+sapply(c(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">10</span>,<span class="hljs-number">20</span>), is_one_head_in_n)
+</div></code></pre>
+<hr>
+<h3 id="problem-7--from-algebra-to-applications-craps-and-blackjack-14-pts">Problem 7 — From algebra to applications: craps <strong>and</strong> blackjack (14 pts)</h3>
+<p><strong>Ross Chapter 2 references</strong> (read before solving):</p>
+<ul>
+<li>§2.5 Equally Likely Outcomes (dice models: sums and conditional events) 【Ch.2】</li>
+<li>End-of-chapter Problems on craps/blackjack 【Ch.2】
+<strong>Strategy hints:</strong></li>
+<li>Reduce craps to the distribution of <strong>dice sums</strong> and conditional win probabilities by point; combine by the <strong>law of total probability</strong>.</li>
+<li>For blackjack, build a simple <strong>deck model</strong> and a detector for <strong>two‑card blackjack</strong>; estimate probabilities by simulation.</li>
+<li>Sanity‑check by comparing with known benchmarks (e.g., craps win ≈ 0.493).</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Applications – craps and blackjack</span>
+
+<span class="hljs-comment"># --- Craps: exact probability of a win ---</span>
+<span class="hljs-comment"># Compute from sum probabilities and conditional continuation</span>
+sum_prob &lt;- table(rowSums(expand.grid(<span class="hljs-number">1</span>:<span class="hljs-number">6</span>,<span class="hljs-number">1</span>:<span class="hljs-number">6</span>))) / <span class="hljs-number">36</span>
+p7  &lt;- as.numeric(sum_prob[<span class="hljs-string">"7"</span>])
+p11 &lt;- as.numeric(sum_prob[<span class="hljs-string">"11"</span>])
+p2  &lt;- as.numeric(sum_prob[<span class="hljs-string">"2"</span>]); p3 &lt;- as.numeric(sum_prob[<span class="hljs-string">"3"</span>]); p12 &lt;- as.numeric(sum_prob[<span class="hljs-string">"12"</span>])
+p_win_immediate &lt;- p7 + p11
+p_lose_immediate &lt;- p2 + p3 + p12
+
+<span class="hljs-comment"># Points and their probabilities</span>
+pts &lt;- c(<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>)
+p_point &lt;- as.numeric(sum_prob[as.character(pts)])
+p_make_point &lt;- c(<span class="hljs-number">3</span>/<span class="hljs-number">36</span>, <span class="hljs-number">4</span>/<span class="hljs-number">36</span>, <span class="hljs-number">5</span>/<span class="hljs-number">36</span>, <span class="hljs-number">5</span>/<span class="hljs-number">36</span>, <span class="hljs-number">4</span>/<span class="hljs-number">36</span>, <span class="hljs-number">3</span>/<span class="hljs-number">36</span>)  <span class="hljs-comment"># rolls equaling the point</span>
+p_seven      &lt;- <span class="hljs-number">6</span>/<span class="hljs-number">36</span>
+
+p_win_from_point &lt;- p_make_point / (p_make_point + p_seven)
+p_win_total &lt;- p_win_immediate + sum(p_point * p_win_from_point)
+p_win_total  <span class="hljs-comment"># ~ 0.49293</span>
+
+<span class="hljs-comment"># --- Blackjack: probability that neither player nor dealer has blackjack (Monte Carlo starter) ---</span>
+deck &lt;- expand.grid(value=c(<span class="hljs-number">2</span>:<span class="hljs-number">10</span>,<span class="hljs-string">"J"</span>,<span class="hljs-string">"Q"</span>,<span class="hljs-string">"K"</span>,<span class="hljs-string">"A"</span>), suit=c(<span class="hljs-string">"S"</span>,<span class="hljs-string">"H"</span>,<span class="hljs-string">"D"</span>,<span class="hljs-string">"C"</span>))
+card_value &lt;- <span class="hljs-keyword">function</span>(v) ifelse(v %<span class="hljs-keyword">in</span>% c(<span class="hljs-string">"J"</span>,<span class="hljs-string">"Q"</span>,<span class="hljs-string">"K"</span>), <span class="hljs-number">10</span>, ifelse(v==<span class="hljs-string">"A"</span>, <span class="hljs-number">11</span>, as.numeric(v)))
+is_blackjack &lt;- <span class="hljs-keyword">function</span>(cards) {
+  vals &lt;- card_value(cards$value)
+  any(cards$value==<span class="hljs-string">"A"</span>) &amp;&amp; sum(vals)==<span class="hljs-number">21</span>
+}
+set.seed(<span class="hljs-number">631</span>)
+trials &lt;- <span class="hljs-number">5000</span>
+est &lt;- mean(replicate(trials, {
+  idx &lt;- sample(<span class="hljs-number">1</span>:nrow(deck), size=<span class="hljs-number">4</span>, replace=<span class="hljs-literal">FALSE</span>)
+  player &lt;- deck[idx[<span class="hljs-number">1</span>:<span class="hljs-number">2</span>], ]; dealer &lt;- deck[idx[<span class="hljs-number">3</span>:<span class="hljs-number">4</span>], ]
+  !(is_blackjack(player) || is_blackjack(dealer))
+}))
+est
+</div></code></pre>
+<hr>
+<h3 id="problem-8--probability-as-a-measure-of-belief-subjective-coherence-14-pts">Problem 8 — Probability as a measure of belief (subjective coherence) (14 pts)</h3>
+<p><strong>Ross Chapter 2 references</strong> (read before solving):</p>
+<ul>
+<li>§2.7 Probability as a Measure of Belief (subjective coherence) 【Ch.2】
+<strong>Strategy hints:</strong></li>
+<li>Treat probabilities as <strong>degrees of belief</strong>; still enforce axioms (coherence).</li>
+<li>Check internal consistency: complements, union bounds, and <strong>Bonferroni</strong> lower bound for intersections.</li>
+<li>If your initial numbers violate constraints, <strong>adjust</strong> them minimally to satisfy coherence.</li>
+</ul>
+<p><strong>Starter R code:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Starter: Subjective probability &amp; coherence checks</span>
+<span class="hljs-comment"># Provide subjective assignments and test basic coherence constraints.</span>
+P &lt;- list(A=<span class="hljs-number">0.3</span>, B=<span class="hljs-number">0.4</span>, AandB=<span class="hljs-number">0.1</span>)   <span class="hljs-comment"># example inputs</span>
+<span class="hljs-comment"># Coherence checks</span>
+<span class="hljs-comment"># 1) 0 &lt;= P &lt;= 1</span>
+all(unlist(P) &gt;= <span class="hljs-number">0</span> &amp; unlist(P) &lt;= <span class="hljs-number">1</span>)
+<span class="hljs-comment"># 2) Bonferroni lower bound for intersection</span>
+P$AandB &gt;= P$A + P$B - <span class="hljs-number">1</span>
+<span class="hljs-comment"># 3) Complement consistency given P(Ac)=1-P(A)</span>
+Pac &lt;- <span class="hljs-number">1</span> - P$A
+
+<span class="hljs-comment"># Adjusting a tentative set to be coherent (simple projection)</span>
+enforce_bounds &lt;- <span class="hljs-keyword">function</span>(x) pmin(<span class="hljs-number">1</span>, pmax(<span class="hljs-number">0</span>, x))
+P$AandB &lt;- enforce_bounds(max(P$A + P$B - <span class="hljs-number">1</span>, P$AandB))
+P
+</div></code></pre>
+
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EN605631_Chapter8_Assignment_Hints.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="en605631--chapter-8-assignment-hints-limit-theorems--approximations">EN.605.631 — Chapter 8 Assignment Hints (Limit Theorems &amp; Approximations)</h1>
+<blockquote>
+<p>Use these hints to decide <strong>which tool</strong> fits each question—inequalities (Markov/Chebyshev/Cantelli), LLN/CLT, Chernoff, or Poisson approximation—and to sanity-check answers.</p>
+</blockquote>
+<h2 id="quick-roadmap">Quick roadmap</h2>
+<ul>
+<li><strong>Markov/Chebyshev/Cantelli</strong> are <strong>worst-case</strong>, moment-only bounds. Use when distributional info is scarce.</li>
+<li><strong>WLLN/SLLN</strong> control how the <strong>sample mean</strong> behaves as n grows (in probability vs almost surely).</li>
+<li><strong>CLT</strong> gives an <strong>approximate distribution</strong> for standardized sums/means; add <strong>continuity correction</strong> for discrete counts.</li>
+<li><strong>Chernoff</strong> (mgf/KL) gives <strong>exponential</strong> tail bounds for sums of independent RVs, usually sharper than Chebyshev.</li>
+<li><strong>Poisson approximation</strong> is for rare-event counts (&quot;law of small numbers&quot;): Binomial/independent indicators → Poisson(λ≈np).</li>
+<li>Always: state assumptions (independence, identical distribution, finite variance, mgf existence) <strong>before</strong> applying a theorem.</li>
+</ul>
+<hr>
+<h3 id="problem-1--markov-chebyshev-one-sided-chebyshev-10-pts">Problem 1 — Markov, Chebyshev, One-Sided Chebyshev (10 pts)</h3>
+<ul>
+<li><strong>Markov</strong> (nonnegative X): <code>P(X ≥ a) ≤ E[X]/a</code>. Use when only <code>E[X]</code> is known.</li>
+<li><strong>Chebyshev</strong>: <code>P(|X−μ| ≥ t) ≤ Var(X)/t^2</code>. Great for centering around the mean; needs finite variance.</li>
+<li><strong>One-sided Chebyshev (Cantelli)</strong>: <code>P(X−μ ≥ t) ≤ σ^2/(σ^2 + t^2)</code> and similarly for the left tail.</li>
+<li>Decide which bound fits the query (two-sided vs one-sided) and plug in <code>μ, σ^2, t</code>. Report the <strong>tightest</strong> among applicable bounds.</li>
+</ul>
+<hr>
+<h3 id="problem-2--wlln-by-chebyshev-10-pts">Problem 2 — WLLN by Chebyshev (10 pts)</h3>
+<ul>
+<li>For i.i.d. with mean <code>μ</code> and variance <code>σ^2&lt;∞</code>, show <code>Var(\bar X_n)=σ^2/n</code>.</li>
+<li>Apply Chebyshev to the <strong>sample mean</strong>:  <code>P(|\bar X_n − μ| ≥ ε) ≤ σ^2/(n ε^2)</code>.</li>
+<li>State: as <code>n→∞</code>, RHS→0 ⇒ <code>\bar X_n → μ</code> <strong>in probability</strong> (WLLN). Optionally show a small simulation path.</li>
+</ul>
+<hr>
+<h3 id="problem-3--clt-accuracy--continuity-14-pts">Problem 3 — CLT (accuracy &amp; continuity) (14 pts)</h3>
+<ul>
+<li>Standardize: <code>Z = (S_n − nμ)/(σ√n)</code> or <code>Z = (\bar X_n − μ)/(σ/√n)</code>; then <code>Z ≈ N(0,1)</code> by CLT.</li>
+<li><strong>Continuity correction</strong> for discrete S_n (e.g., Binomial/Poisson):
+<ul>
+<li><code>P(S_n ≤ k) ≈ Φ((k+0.5 − nμ)/(σ√n))</code>, <code>P(S_n ≥ k) ≈ 1 − Φ((k−0.5 − nμ)/(σ√n))</code>.</li>
+</ul>
+</li>
+<li><strong>Accuracy</strong>: mention Berry–Esseen idea — error <code>≈ O(1/√n)</code> when a finite third absolute moment exists. Use this to justify n-requirements qualitatively.</li>
+</ul>
+<hr>
+<h3 id="problem-4--choose-n-clt-vs-chebyshev-12-pts">Problem 4 — Choose n: CLT vs Chebyshev (12 pts)</h3>
+<ul>
+<li>Goal: choose <code>n</code> for <code>P(|\bar X_n − μ| ≤ ε) ≥ 1 − δ</code>.</li>
+<li><strong>Chebyshev route</strong>: ensure <code>σ^2/(n ε^2) ≤ δ</code> ⇒ <code>n ≥ σ^2/(δ ε^2)</code> (simple, conservative).</li>
+<li><strong>CLT route</strong> (two-sided): require <code>P(|Z| ≤ z_{1−δ/2}) ≈ 1 − δ</code> ⇒ <code>ε ≥ z_{1−δ/2} σ/√n</code> ⇒ <code>n ≥ (z_{1−δ/2} σ/ε)^2</code>.</li>
+<li>Compare the <code>n</code> from both methods; comment on which is more realistic for the given distribution/<code>n</code> scale.</li>
+</ul>
+<hr>
+<h3 id="problem-5--chernoff-vs-chebyshevexact-12-pts">Problem 5 — Chernoff vs Chebyshev/Exact (12 pts)</h3>
+<ul>
+<li>For a sum of independent RVs, <strong>Chernoff bound</strong>: <code>P(S_n ≥ a) ≤ inf_{t&gt;0} e^{−ta} M_{S_n}(t)</code> where <code>M_{S_n}(t)=∏ M_X(t)</code>.</li>
+<li>For Bernoulli/Binomial: use <strong>KL form</strong> <code>P(S_n ≥ nq) ≤ exp(−n D(q || p))</code> with <code>D(q||p)=q log(q/p)+(1−q)log((1−q)/(1−p))</code>.</li>
+<li>Compare numerically with <strong>Chebyshev</strong> and, if feasible, with the <strong>exact</strong> binomial tail (or normal approx + continuity).</li>
+<li>Comment on regimes: Chernoff much tighter in the <strong>large-deviation</strong> (far-tail) regime; Chebyshev is coarse but moment-based.</li>
+</ul>
+<hr>
+<h3 id="problem-6--slln-visualization-10-pts">Problem 6 — SLLN Visualization (10 pts)</h3>
+<ul>
+<li>Visualize <strong>SLLN</strong>: plot <code>\bar X_n</code> vs <code>n</code> for one or many simulated paths with horizontal line at <code>μ</code>.</li>
+<li>Overlay a <strong>√n-scaled band</strong> if helpful: <code>μ ± c σ/√n</code> to emphasize shrinking variability (not a.s. proof but useful intuition).</li>
+<li>Use distributions with and without finite variance to contrast behavior (e.g., compare Exp(1) vs a heavy-tailed Pareto).</li>
+</ul>
+<hr>
+<h3 id="problem-7--poisson-approximation-14-pts">Problem 7 — Poisson Approximation (14 pts)</h3>
+<ul>
+<li>Use <strong>Poisson(λ=np)</strong> to approximate <code>Bin(n,p)</code> when <code>n</code> is large and <code>p</code> is small (keep <code>λ</code> moderate).</li>
+<li>Compute exact <code>Bin(n,p)</code> probabilities for a few events and compare with <code>Pois(λ)</code>; comment on <strong>relative error</strong>.</li>
+<li>Rule-of-thumb: good when <code>p ≤ 0.05</code> and <code>n ≥ 100</code>. A theoretical guardrail: <strong>Le Cam</strong> gives total variation ≤ <code>2 n p^2</code> for Binomial.</li>
+<li>If events are independent but not identical (different <code>p_i</code>), use <code>λ=∑ p_i</code> and the same idea.</li>
+</ul>
+<hr>
+<h3 id="problem-8--clt-in-practice-18-pts">Problem 8 — CLT in Practice (18 pts)</h3>
+<ul>
+<li>Lay out the <strong>data-generating story</strong>: identify <code>μ, σ^2</code>, independence assumptions, and whether counts are discrete.</li>
+<li>Choose between <strong>CLT</strong> (normal approximation with/without continuity correction), <strong>Chernoff</strong> (upper/lower tail bounds), or <strong>Poisson approx</strong> for rare events.</li>
+<li>Provide a brief <strong>diagnostic</strong>: <code>np</code> or <code>λ</code> scale, skewness, and sample size to justify your chosen approximation.</li>
+<li>Validate with a <strong>quick simulation</strong> for at least one parameter setting and report the observed vs predicted probability.</li>
+</ul>
+<hr>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<ul>
+<li>Applying CLT at <strong>very small n</strong> without checking symmetry/skew or using continuity correction for discrete sums.</li>
+<li>Forgetting assumptions (i.i.d., finite variance, mgf existence) before invoking LLN/CLT/Chernoff.</li>
+<li>Mixing up <strong>one-sided</strong> vs <strong>two-sided</strong> bounds (use Cantelli for one-sided).</li>
+<li>Using Poisson approximation when <code>p</code> is not small or <code>np</code> is large (the tail may be very inaccurate).</li>
+<li>Comparing bounds to exact probabilities without noting that <strong>bounds are not equalities</strong>—they can be loose.</li>
+</ul>
+
+</body>
+</html>

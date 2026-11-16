@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EN605631_Chapter6_Assignment_Hints.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="en605631--chapter-6-assignment-hints-joint-distributions">EN.605.631 — Chapter 6 Assignment Hints (Joint Distributions)</h1>
+<blockquote>
+<p>Use these hints to plan your derivations and sanity‑check results. Include small tables, sketches of regions, or brief simulations to validate edge cases.</p>
+</blockquote>
+<h2 id="quick-roadmap">Quick roadmap</h2>
+<ul>
+<li><strong>State the model</strong>: joint pmf/pdf <code>p_{X,Y}(x,y)</code> or <code>f_{X,Y}(x,y)</code> and the <strong>support region</strong> <code>S</code> (grid or subset of ℝ²).</li>
+<li><strong>Marginals</strong>: <code>p_X(x)=∑_y p_{X,Y}(x,y)</code> or <code>f_X(x)=∫ f_{X,Y}(x,y) dy</code> (integrate/sum over the other variable’s support).</li>
+<li><strong>Conditionals</strong>: <code>p_{X|Y}(x|y) = p_{X,Y}(x,y)/p_Y(y)</code>; <code>f_{X|Y}(x|y) = f_{X,Y}(x,y)/f_Y(y)</code> where denominators &gt; 0.</li>
+<li><strong>Independence</strong>: check <strong>factorization</strong> (<code>p_{X,Y}=p_X p_Y</code>) <em>on the support</em>.</li>
+<li><strong>Expectations</strong>: bivariate LOTUS <code>E[g(X,Y)] = ∑∑ g(x,y)p_{X,Y}(x,y)</code> or <code>∬ g(x,y) f_{X,Y}(x,y) dxdy</code>.</li>
+<li><strong>Covariance/Correlation</strong>: <code>Cov(X,Y)=E[XY]-E[X]E[Y]</code>; note <code>Cov=0</code> does <strong>not</strong> imply independence in general.</li>
+<li><strong>Sums</strong>: use <strong>convolution</strong> (discrete sum/integral) for <code>X+Y</code>, or recognize named family closures (Normal, Gamma/chi‑square, Poisson).</li>
+<li><strong>Transformations</strong>: for <code>U=g(X,Y)</code>, <code>V=h(X,Y)</code>, map the region and use Jacobian <code>|det(∂(x,y)/∂(u,v))|</code>. Prefer the <strong>cdf method</strong> if non‑invertible.</li>
+</ul>
+<hr>
+<h3 id="problem-1--joint-cdfpmf-basics--marginals-10-pts">Problem 1 — Joint CDF/pmf basics &amp; marginals (10 pts)</h3>
+<ul>
+<li>Draw the <strong>support</strong>: for discrete, mark the lattice points; for continuous, shade the region in ℝ².</li>
+<li>From <code>F_{X,Y}(x,y)</code>, recover the <strong>joint mass/density</strong> by differences/partials; from pmf/pdf, verify <code>F</code> increases to 1.</li>
+<li>Compute <strong>marginals</strong> by summing/integrating over the other variable’s domain; confirm they each sum/integrate to 1.</li>
+<li>Check edge cases: <code>F(∞,∞)=1</code>, <code>F(−∞,y)=F(x,−∞)=0</code>; monotone &amp; right‑continuous in each argument.</li>
+</ul>
+<hr>
+<h3 id="problem-2--independence-diagnostics-discrete--continuous-12-pts">Problem 2 — Independence diagnostics (discrete &amp; continuous) (12 pts)</h3>
+<ul>
+<li>Test <strong>independence</strong> by factorization: <code>p_{X,Y}(x,y) ?= p_X(x)p_Y(y)</code> (or <code>f_{X,Y}=f_X f_Y</code>).</li>
+<li>For discrete counterexamples, use a small 2×2 table with margins 0.5/0.5 each but a non‑factorable joint.</li>
+<li>For continuous, integrate to get marginals first; watch for <strong>support‑restricted</strong> dependence (e.g., triangular region).</li>
+<li>If <code>Cov(X,Y)=0</code>, still check factorization—uncorrelated ≠ independent (unless jointly normal).</li>
+</ul>
+<hr>
+<h3 id="problem-3--convolution--comparison-12-pts">Problem 3 — Convolution &amp; comparison (12 pts)</h3>
+<ul>
+<li>If <code>Z=X+Y</code>: <strong>discrete</strong> <code>p_Z(z)=∑_x p_X(x)p_Y(z−x)</code>; <strong>continuous</strong> <code>f_Z(z)=∫ f_X(x)f_Y(z−x) dx</code>.</li>
+<li>Sketch the line <code>x+y=z</code> slicing through the support to set integration/summation limits correctly.</li>
+<li>Compare to a known family when possible (e.g., sum of iid Poissons is Poisson; normals add to normal).</li>
+<li>Sanity checks: <code>E[Z]=E[X]+E[Y]</code>; <code>Var(Z)=Var(X)+Var(Y)</code> if independence holds.</li>
+</ul>
+<hr>
+<h3 id="problem-4--conditional-distributions-discrete--continuous-12-pts">Problem 4 — Conditional distributions (discrete &amp; continuous) (12 pts)</h3>
+<ul>
+<li>Compute <code>p_{X|Y}(x|y)</code> / <code>f_{X|Y}(x|y)</code> as joint over marginal; confirm it integrates/sums to 1 in <code>x</code>.</li>
+<li>For continuous triangular/rectangular supports, draw cross‑sections at fixed <code>y</code> to see the <strong>conditional support</strong>.</li>
+<li>Use conditional expectation <code>E[X|Y=y]</code> to compute <input type="checkbox" id="checkbox0" checked="true"><label for="checkbox0">= E[E[X|Y]]</label> (<strong>law of total expectation</strong>).</li>
+<li>Similarly for variance: <code>Var(X) = E[Var(X|Y)] + Var(E[X|Y])</code> (<strong>law of total variance</strong>).</li>
+</ul>
+<hr>
+<h3 id="problem-5--order-statistics--the-range-12-pts">Problem 5 — Order statistics &amp; the range (12 pts)</h3>
+<ul>
+<li>For iid continuous <code>X_1,…,X_n</code> with cdf <code>F</code> and pdf <code>f</code>, <strong>order statistics</strong>:
+<ul>
+<li><code>f_{X_{(k)}}(x) = {n\choose k-1} [F(x)]^{k-1} [1-F(x)]^{n-k} f(x)</code>.</li>
+<li><code>f_{X_{(1)},X_{(n)}}(u,v)</code> has support <code>u≤v</code>; start from joint density of all order stats or use gap transforms.</li>
+</ul>
+</li>
+<li>The <strong>range</strong> <code>R=X_{(n)}-X_{(1)}</code>: derive via joint of min/max then transform to <code>(U,V)=(min, range)</code>; check Jacobian = 1.</li>
+<li>For <code>Uniform(0,1)</code>, results simplify greatly; use as a check or as the core of your derivation.</li>
+</ul>
+<hr>
+<h3 id="problem-6--sums-of-independent-gammas--chi-square-10-pts">Problem 6 — Sums of independent gammas &amp; chi-square (10 pts)</h3>
+<ul>
+<li>If <code>X_i ~ Gamma(α_i, λ)</code> independent (common <strong>rate</strong> <code>λ</code>), then <code>∑ X_i ~ Gamma(α_•, λ)</code> with <code>α_•=∑ α_i</code>.</li>
+<li><strong>Chi‑square</strong> with <code>ν</code> df is <code>Gamma(α=ν/2, λ=1/2)</code>; sums of independent chi‑squares add df.</li>
+<li>Use mgfs to justify closure quickly: <code>M_{Gamma}(t) = (λ/(λ−t))^{α}</code> for <code>t&lt;λ</code>.</li>
+<li>Translate between <strong>rate</strong>/ <strong>scale</strong> conventions carefully; keep one consistent parameterization.</li>
+</ul>
+<hr>
+<h3 id="problem-7--transformations--jacobians-bivariate-16-pts">Problem 7 — Transformations &amp; Jacobians (bivariate) (16 pts)</h3>
+<ul>
+<li>For a bijective transform <code>(U,V)=T(X,Y)</code>, compute the inverse <code>(X,Y)=T^{-1}(U,V)</code> and the <strong>Jacobian</strong> <code>|det(∂(x,y)/∂(u,v))|</code>.</li>
+<li>Map the <strong>region</strong>: transform boundaries carefully; draw a few level curves to avoid algebraic mistakes.</li>
+<li>If the map is <strong>many‑to‑one</strong> (e.g., <code>(R,Θ)</code> from <code>(X,Y)</code> for polar), <strong>sum</strong> contributions from all preimages.</li>
+<li>Prefer the <strong>cdf method</strong> for non‑invertible <code>g(X,Y)</code>; differentiate at the end for densities.</li>
+</ul>
+<hr>
+<h3 id="problem-8--sums--mixtures-in-practice-poisson-splitting--multinomial-16-pts">Problem 8 — Sums &amp; mixtures in practice (Poisson splitting / multinomial) (16 pts)</h3>
+<ul>
+<li><strong>Poisson splitting</strong>: if <code>N ~ Pois(λ)</code> and each event independently classified into categories with probs <code>p_i</code>, then counts are <strong>independent</strong> <code>Pois(λ p_i)</code> and jointly <strong>multinomial</strong> given <code>N</code>.</li>
+<li>Use the <strong>law of total probability</strong>: unconditional joint pmf is a <strong>Poisson–multinomial mixture</strong>; sum over <code>N</code>.</li>
+<li>Validate by checking sums to 1 and matching <strong>marginal</strong> <code>Pois(λ p_i)</code> distributions.</li>
+<li>For sums/mixtures in practice, simulate small examples to verify independence and marginals.</li>
+</ul>
+<hr>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<ul>
+<li>Forgetting to describe the <strong>support region</strong> precisely before integrating/summing.</li>
+<li>Using independence without verifying <strong>factorization</strong> on the support.</li>
+<li>Mis‑setting convolution limits (draw <code>x+y=z</code> lines).</li>
+<li>Dropping the absolute value in the <strong>Jacobian</strong> or missing multiple preimages.</li>
+<li>Treating <code>Cov=0</code> as independence (only true for special families, e.g., jointly normal).</li>
+<li>Not checking that conditionals integrate/sum to 1 for each conditioning value.</li>
+</ul>
+
+</body>
+</html>

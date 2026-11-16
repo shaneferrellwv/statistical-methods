@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EN605631_Chapter5_Assignment_Hints.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="en605631--chapter-5-assignment-hints-continuous-random-variables">EN.605.631 — Chapter 5 Assignment Hints (Continuous Random Variables)</h1>
+<blockquote>
+<p>Use these hints to structure your work and sanity‑check results. Keep derivations in your notebook; these notes aim to guide, not replace, your proofs/calculations.</p>
+</blockquote>
+<h2 id="quick-roadmap">Quick roadmap</h2>
+<ul>
+<li><strong>Name the random variable X</strong> and its <strong>support</strong> (interval(s) on ℝ).</li>
+<li>Decide whether to work with <strong>pdf f(x)</strong> or <strong>cdf F(x)</strong>. Use <code>F(b)−F(a)</code> for interval probabilities.</li>
+<li>Verify <strong>pdf properties</strong>: <code>f(x) ≥ 0</code> on the support; <code>∫ f(x) dx = 1</code>.</li>
+<li>For expectations, default to <strong>LOTUS</strong>: <code>E[g(X)] = ∫ g(x) f(x) dx</code>.</li>
+<li>If a known family (Normal, Exponential, Gamma, Weibull) fits, <strong>reuse</strong> its facts (means, variances, cdf conventions).</li>
+<li>Plot <strong>pdf</strong> (smooth curve) and <strong>cdf</strong> (smooth, increasing, horizontal tails). Check qualitative shape (e.g., skew).</li>
+</ul>
+<hr>
+<h3 id="problem-1--pdf-cdf-and-probability-10-pts">Problem 1 — PDF, CDF, and Probability (22 pts)</h3>
+<ul>
+<li>Start by writing <strong>support</strong> <code>S</code> and check that <code>∫_S f(x) dx = 1</code>. If not, renormalize or re‑check limits.</li>
+<li>Connection: <code>F(x) = ∫_{-∞}^x f(t) dt</code>; if <code>F</code> is given, recover <code>f</code> by differentiating on points of continuity.</li>
+<li>Compute sample probabilities via <strong>cdf differences</strong>: <code>P(a &lt; X ≤ b) = F(b)−F(a)</code>. For continuous <code>X</code>, points have prob 0.</li>
+<li>Always include units/interpretation (e.g., seconds, meters) and a quick <strong>sketch</strong> of <code>f</code> and <code>F</code>.</li>
+</ul>
+<hr>
+<h3 id="problem-2--lotus--transformations-12-pts">Problem 2 — LOTUS &amp; Transformations (22 pts)</h3>
+<ul>
+<li><strong>LOTUS</strong> first: for any function <code>g</code>, compute <code>E[g(X)] = ∫ g(x) f(x) dx</code> on the support.</li>
+<li>If <code>Y = g(X)</code> and <code>g</code> is <strong>monotone</strong>, use the <strong>change‑of‑variables</strong> formula: <code>f_Y(y) = f_X(g^{-1}(y)) |d/dy g^{-1}(y)|</code>.</li>
+<li>If <code>g</code> is <strong>not monotone</strong>, <strong>partition</strong> the preimage: sum contributions from each branch <code>x_i(y)</code> where <code>g(x_i)=y</code>.</li>
+<li>For <strong>linear</strong> transforms: <code>E[aX+b]=aE[X]+b</code>, <code>Var(aX+b)=a^2 Var(X)</code>—use these before integrating from scratch.</li>
+</ul>
+<hr>
+<h3 id="problem-3--normal-distribution-12-pts">Problem 3 — Normal Distribution (22 pts)</h3>
+<ul>
+<li>Standardize: if <code>X ~ N(μ, σ^2)</code>, set <code>Z=(X−μ)/σ ~ N(0,1)</code>; use <code>pnorm</code>, <code>qnorm</code> to evaluate probabilities/quantiles.</li>
+<li>Symmetry: <code>P(X ≥ μ) = 0.5</code>, and <code>P(|X−μ| ≤ kσ)</code> matches the 68–95–99.7 rule (approx).</li>
+<li>Linear combos: sums of independent normals are normal; <code>aX+b</code> remains normal with mean <code>aμ+b</code>, var <code>a^2σ^2</code>.</li>
+<li>When sketching, indicate <code>μ</code> and <code>μ±σ</code> on the horizontal axis for orientation.</li>
+</ul>
+<hr>
+<h3 id="problem-4--normal-approximation-12-pts">Problem 4 — Normal Approximation (22 pts)</h3>
+<ul>
+<li><strong>Binomial → Normal</strong>: if <code>X ~ Bin(n,p)</code> with <code>np(1−p)</code> not tiny, use <code>N(μ=np, σ=√(np(1−p)))</code>.</li>
+<li>Apply <strong>continuity correction</strong>: turn <code>P(X ≤ k)</code> into <code>P(Y ≤ k + 0.5)</code> where <code>Y</code> is the normal approximation.</li>
+<li>Sanity checks: tail probs should be in <code>[0,1]</code>; <code>P(X in plausible range)</code> ≈ 1; compare to exact <code>pbinom</code> for a few values.</li>
+</ul>
+<hr>
+<h3 id="problem-5--exponential-distribution-14-pts">Problem 5 — Exponential Distribution (EC)</h3>
+<ul>
+<li><code>X ~ Exp(λ)</code> has <code>f(x)=λ e^{−λx}</code> for <code>x≥0</code>, <code>E[X]=1/λ</code>, <strong>memoryless</strong>: <code>P(X&gt;s+t | X&gt;s)=P(X&gt;t)</code>.</li>
+<li>For <strong>minimum of exponentials</strong>: if independent with rates <code>λ_i</code>, then <code>min(X_i) ~ Exp(Σ λ_i)</code>; <code>P(argmin = i) = λ_i / Σ λ_j</code>.</li>
+<li>Convert between <strong>rate</strong> and <strong>scale</strong> if needed (<code>scale = 1/λ</code>). Be consistent throughout the problem.</li>
+</ul>
+<hr>
+<h3 id="problem-6--gamma-distribution-10-pts">Problem 6 — Gamma Distribution (EC)</h3>
+<ul>
+<li><code>X ~ Gamma(α, λ)</code> (shape <code>α&gt;0</code>, rate <code>λ&gt;0</code>) has mean <code>α/λ</code>, variance <code>α/λ^2</code>. For integer <code>α=r</code>, it’s <strong>Erlang</strong> (sum of <code>r</code> exponentials).</li>
+<li>Use the <strong>incomplete gamma</strong> (or <code>pgamma</code>) for cdf calculations; don’t try to integrate by parts repeatedly unless asked.</li>
+<li>If a Poisson‑process interpretation appears, recognize <strong>waiting time to the r‑th event</strong> → <code>Gamma(r, λ)</code>.</li>
+</ul>
+<hr>
+<h3 id="problem-7--weibull-distribution-10-pts">Problem 7 — Weibull Distribution (EC)</h3>
+<ul>
+<li>Weibull(shape <code>k</code>, scale <code>η</code>): <code>F(x)=1−exp{−(x/η)^k}</code> for <code>x≥0</code>; <code>E[X]=η Γ(1+1/k)</code>.</li>
+<li><strong>Hazard behavior</strong>: increasing if <code>k&gt;1</code>, constant if <code>k=1</code> (exponential), decreasing if <code>k&lt;1</code>.</li>
+<li>Useful transform: if <code>T ~ Weibull(k, η)</code>, then <code>(T/η)^k ~ Exp(1)</code>—handy for simulation and proofs.</li>
+</ul>
+<hr>
+<h3 id="problem-8--distribution-of-a-function-10-pts">Problem 8 — Distribution of a Function (EC)</h3>
+<ul>
+<li>For <code>Y=g(X)</code> with a <strong>non‑monotone</strong> <code>g</code> (e.g., <code>g(x)=x^2</code>), split the support into monotone pieces and <strong>sum Jacobian terms</strong>.</li>
+<li>Prefer the <strong>cdf method</strong> when algebra gets messy: compute <code>P(Y ≤ y) = P(g(X) ≤ y)</code> first, then differentiate to get <code>f_Y</code>.</li>
+<li>Check support carefully: list all <code>y</code> values that can occur and justify endpoints.</li>
+</ul>
+<hr>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<ul>
+<li>Forgetting to specify <strong>support</strong> or using wrong limits of integration.</li>
+<li>Dropping absolute values in the <strong>Jacobian</strong> for transformations.</li>
+<li>Skipping the <strong>continuity correction</strong> in normal approximations to discrete distributions.</li>
+<li>Confusing <strong>rate (λ)</strong> with <strong>scale (1/λ)</strong>; mixing parameterizations within a problem.</li>
+<li>Plotting a continuous <strong>cdf</strong> with jumps (it should be continuous and nondecreasing).</li>
+<li>Not checking that <code>∫ f(x) dx = 1</code> before proceeding.</li>
+</ul>
+
+</body>
+</html>

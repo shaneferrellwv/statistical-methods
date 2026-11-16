@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EN605631_Chapter7_Assignment_Hints.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="en605631--chapter-7-assignment-hints-expectation-covariance-mgfs">EN.605.631 — Chapter 7 Assignment Hints (Expectation, Covariance, MGFs)</h1>
+<blockquote>
+<p>Use these hints to plan your derivations before you compute. Pair each result with a quick check: limiting cases, symmetry, or a tiny simulation.</p>
+</blockquote>
+<h2 id="quick-roadmap">Quick roadmap</h2>
+<ul>
+<li><strong>Linearity first</strong>: <code>E[∑ X_i] = ∑ E[X_i]</code> (no independence needed). Indicators: <code>E[1_A] = P(A)</code>.</li>
+<li><strong>Covariance/correlation</strong>: <code>Cov(X,Y)=E[XY]-E[X]E[Y]</code>; <code>Var(∑ X_i)=∑ Var(X_i) + 2∑_{i&lt;j} Cov(X_i,X_j)</code>. Independence ⇒ <code>Cov=0</code> but not conversely.</li>
+<li><strong>Conditional tools</strong>: <code>E[X]=E[E[X|Y]]</code> (law of total expectation); <code>Var(X)=E[Var(X|Y)] + Var(E[X|Y])</code>.</li>
+<li><strong>MGFs</strong>: <code>M_X(t)=E[e^{tX}]</code>; <code>M_{aX+b}(t)=e^{bt} M_X(at)</code>; for independent sums, <code>M_{X+Y}=M_X M_Y</code>. Identify distributions via matching mgfs and get moments by differentiating at 0.</li>
+<li><strong>Random walks &amp; runs</strong>: represent with sums of i.i.d. increments or indicator counts; use linearity/variance additivity and (when applicable) independence.</li>
+</ul>
+<hr>
+<h3 id="problem-1--linearity-of-expectation--indicators-10-pts">Problem 1 — Linearity of Expectation &amp; Indicators (10 pts)</h3>
+<ul>
+<li>Translate counts to <strong>indicator variables</strong>: if <code>X</code> counts occurrences of events <code>A_i</code>, write <code>X=∑ I_i</code> with <code>I_i=1_{A_i}</code>.</li>
+<li>Then <code>E[X]=∑ P(A_i)</code> regardless of dependence. For pair counts, use <code>E[X]=∑_{i&lt;j} P(A_i∩A_j)</code>.</li>
+<li>When events are symmetric, compute one probability and multiply. Use complements when direct probabilities are messy.</li>
+</ul>
+<hr>
+<h3 id="problem-2--expectation-of-common-distributions-12-pts">Problem 2 — Expectation of Common Distributions (12 pts)</h3>
+<ul>
+<li>Recall quick facts you can cite without re‑derivation:
+<ul>
+<li>Bernoulli/Indicator: <code>E[p] = p</code>, <code>Var = p(1-p)</code>; Binomial: <code>E[np]</code>, <code>Var=np(1-p)</code>; Poisson: <code>E=Var=λ</code>.</li>
+<li>Geometric (trials to first success): <code>E=1/p</code>, <code>Var=(1-p)/p^2</code>; NegBin (r‑th success): <code>E=r/p</code>, <code>Var=r(1-p)/p^2</code>.</li>
+<li>Hypergeometric: <code>E = n K/N</code>, <code>Var = n (K/N)(1-K/N) ((N-n)/(N-1))</code>.</li>
+<li>Exponential: <code>E=1/λ</code>; Gamma(shape <code>α</code>, rate <code>λ</code>): <code>E=α/λ</code>; Normal: <code>E=μ</code>.</li>
+</ul>
+</li>
+<li>If the problem requests a derivation, use LOTUS or MGF differentiation: <code>E[X]=M_X'(0)</code>, <code>E[X^2]=M_X''(0)</code>.</li>
+</ul>
+<hr>
+<h3 id="problem-3--classical-expectation-problems-12-pts">Problem 3 — Classical Expectation Problems (12 pts)</h3>
+<ul>
+<li>For classical puzzles (e.g., matching, occupancy, coupon elements), aim to <strong>count with indicators</strong> or use <strong>symmetry/conditioning</strong>.</li>
+<li>Set up a <strong>recurrence</strong> if a direct sum is messy; solve via telescoping or boundary conditions.</li>
+<li>Always sanity‑check extremes (e.g., as <code>n→∞</code>, as <code>p→0/1</code>).</li>
+</ul>
+<hr>
+<h3 id="problem-4--covariance-variance-of-sums-correlation-12-pts">Problem 4 — Covariance, Variance of Sums, Correlation (12 pts)</h3>
+<ul>
+<li>Start from <code>Var(S)=E[S^2]-(E[S])^2</code> with <code>S=∑ X_i</code>. Expand <code>E[S^2]=∑ E[X_i^2]+2∑_{i&lt;j} E[X_i X_j]</code>.</li>
+<li>Use <code>Cov(X_i,X_j)=E[X_i X_j]-E[X_i]E[X_j]</code> to write <code>Var(S)=∑ Var(X_i) + 2∑_{i&lt;j} Cov(X_i,X_j)</code>.</li>
+<li>Correlation: <code>ρ=Cov(X,Y)/(σ_X σ_Y)</code> with <code>|ρ|≤1</code> (Cauchy‑Schwarz). Note: <code>Cov=0</code> does <strong>not</strong> imply independence unless special cases (e.g., jointly normal).</li>
+<li>For indicator vectors, <code>Cov(1_A,1_B)=P(A∩B)-P(A)P(B)</code>—handy for overlaps.</li>
+</ul>
+<hr>
+<h3 id="problem-5--conditional-expectation--total-expectation-14-pts">Problem 5 — Conditional Expectation &amp; Total Expectation (14 pts)</h3>
+<ul>
+<li>Compute <code>E[X]</code> by conditioning on a convenient variable/partition: <code>E[X]=∑ E[X|Y=y] P_Y(y)</code> or <code>∫ E[X|Y=y] f_Y(y) dy</code>.</li>
+<li>Use the <strong>tower property</strong>: <code>E[X g(Y)] = E[ E[X|Y] g(Y) ]</code> for measurable <code>g</code>.</li>
+<li>For variance, remember the <strong>law of total variance</strong>: <code>Var(X)=E[Var(X|Y)] + Var(E[X|Y])</code>.</li>
+<li>Choose <code>Y</code> to make conditionals simple (e.g., success counts, mixture components, or sigma‑algebras that render independence).</li>
+</ul>
+<hr>
+<h3 id="problem-6--random-walk--runs-10-pts">Problem 6 — Random Walk &amp; Runs (10 pts)</h3>
+<ul>
+<li>Model a simple random walk as <code>S_n=∑_{i=1}^n ξ_i</code> with <code>P(ξ_i=1)=p</code>, <code>P(ξ_i=-1)=q</code>. Then <code>E[S_n]=n(p−q)</code>, <code>Var(S_n)=n·4pq</code>.</li>
+<li>For <strong>number of runs</strong> in coin tosses, define <code>I_1=1</code> and <code>I_i=1</code> if toss <code>i</code> starts a new run; then <code>R=∑ I_i</code>. Compute <code>E[R]</code> via <code>P(I_i=1)</code>.</li>
+<li>For <strong>hitting times/first return</strong>, set up a recurrence for expectations and solve with boundary conditions (check symmetry at <code>p=1/2</code>).</li>
+</ul>
+<hr>
+<h3 id="problem-7--mgfs--distribution-identification-14-pts">Problem 7 — MGFs &amp; Distribution Identification (14 pts)</h3>
+<ul>
+<li>Write/recognize the <strong>mgf</strong>:
+<ul>
+<li>Bernoulli: <code>M(t)=1-p+pe^t</code>; Poisson: <code>M(t)=exp(λ(e^t−1))</code>; Normal: <code>M(t)=exp(μt + (σ^2 t^2)/2)</code>; Gamma(rate <code>λ</code>): <code>M(t)=(λ/(λ−t))^α</code>.</li>
+</ul>
+</li>
+<li>Identify a distribution by matching <code>M_X(t)</code> to a known form on a neighborhood of 0 (mgf uniqueness).</li>
+<li>For sums of independent RVs, multiply mgfs; means/variances follow from derivatives at 0.</li>
+<li>Confirm <strong>domain</strong> where <code>M_X(t)</code> exists (some distributions lack mgfs for all <code>t</code>).</li>
+</ul>
+<hr>
+<h3 id="problem-8--advanced-expectation-applications-16-pts">Problem 8 — Advanced Expectation Applications (16 pts)</h3>
+<ul>
+<li>Look for a <strong>one‑line trick</strong>: indicators + linearity, a clever conditioning step, or mgf factorization.</li>
+<li>Consider <strong>Jensen’s inequality</strong> for convex/concave functions (e.g., compare <code>E[g(X)]</code> to <code>g(E[X])</code>).</li>
+<li>If a <strong>random sum</strong> appears <code>S_N=∑_{i=1}^N X_i</code> with <code>N</code> independent of the i.i.d. <code>X_i</code>, use <strong>Wald’s identity</strong>: <code>E[S_N]=E[N]E[X_1]</code>.</li>
+<li>When multiple tools could work, prototype both (conditioning vs mgf) on a small special case and keep the cleaner path.</li>
+</ul>
+<hr>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<ul>
+<li>Using independence where it is not given; remember linearity needs no independence, but <code>Var(∑)</code> simplifications do.</li>
+<li>Forgetting that <code>Cov=0</code> does <strong>not</strong> imply independence in general.</li>
+<li>Differentiating mgfs without checking their domain (ensure <code>t=0</code> neighborhood exists).</li>
+<li>Writing tower laws with the wrong conditioning variable; always verify measurability and supports.</li>
+<li>Skipping boundary/initial conditions in recurrences for random walks or hitting times.</li>
+</ul>
+
+</body>
+</html>

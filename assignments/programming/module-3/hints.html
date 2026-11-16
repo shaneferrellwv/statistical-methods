@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EN605631_Chapter3_Hints_and_Starters.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="en605631--chapter-3-assignment-hints-conditional-probability--independence">EN.605.631 — Chapter 3 Assignment Hints (Conditional Probability &amp; Independence)</h1>
+<blockquote>
+<p>Use these hints to structure your work without jumping straight to final numeric answers.
+Pair each hint with a quick sketch, a tree/graph, or a short simulation to sanity‑check.</p>
+</blockquote>
+<h2 id="general-workflow">General workflow</h2>
+<ol>
+<li><strong>Name events</strong> clearly and draw a picture (table, tree, or network).</li>
+<li><strong>Translate words to symbols</strong>: identify unions/intersections, complements, and partitions.</li>
+<li><strong>Choose a tool</strong>: conditional probability, law of total probability, Bayes, independence tests, or a counting argument.</li>
+<li><strong>Validate</strong>: simulate a small version and check limiting or symmetry cases.</li>
+</ol>
+<hr>
+<h2 id="problem-1--conditioning-by-enumeration--simulation">Problem 1 — Conditioning by enumeration &amp; simulation</h2>
+<p><strong>What it tests:</strong> Computing P(E|F) by counting outcomes when sample points are equally likely; verifying by simulation.<br>
+<strong>Plan:</strong></p>
+<ul>
+<li>Write the sample space explicitly (e.g., ordered dice pairs).</li>
+<li>Count |E ∩ F| and |F|, then take |E ∩ F|/|F|.</li>
+<li>Cross‑check with a quick Monte Carlo simulation.</li>
+</ul>
+<p><strong>Pitfalls:</strong> Mixing up “at least one” vs “exactly one”; forgetting order in ordered pairs.</p>
+<p><strong>Starter R (skeleton):</strong></p>
+<pre class="hljs"><code><div>set.seed(<span class="hljs-number">631</span>)
+<span class="hljs-comment"># Enumerate all ordered dice pairs</span>
+Ω &lt;- expand.grid(d1 = <span class="hljs-number">1</span>:<span class="hljs-number">6</span>, d2 = <span class="hljs-number">1</span>:<span class="hljs-number">6</span>)
+
+<span class="hljs-comment"># Define events as logical vectors</span>
+A &lt;- with(Ω, d1 + d2 == <span class="hljs-number">7</span>)               <span class="hljs-comment"># example event</span>
+B &lt;- with(Ω, d1 == <span class="hljs-number">4</span> | d2 == <span class="hljs-number">4</span>)          <span class="hljs-comment"># example conditioning event</span>
+
+<span class="hljs-comment"># Compute conditional probability P(A | B)</span>
+p_hat_enum &lt;- mean(A &amp; B) / mean(B)
+
+<span class="hljs-comment"># Monte Carlo check</span>
+n &lt;- <span class="hljs-number">1e5</span>
+d1 &lt;- sample(<span class="hljs-number">1</span>:<span class="hljs-number">6</span>, n, replace = <span class="hljs-literal">TRUE</span>)
+d2 &lt;- sample(<span class="hljs-number">1</span>:<span class="hljs-number">6</span>, n, replace = <span class="hljs-literal">TRUE</span>)
+A_sim &lt;- (d1 + d2 == <span class="hljs-number">7</span>)
+B_sim &lt;- (d1 == <span class="hljs-number">4</span> | d2 == <span class="hljs-number">4</span>)
+p_hat_sim &lt;- mean(A_sim &amp; B_sim) / mean(B_sim)
+<span class="hljs-comment"># print(p_hat_enum); print(p_hat_sim)</span>
+</div></code></pre>
+<hr>
+<h2 id="problem-2--law-of-total-probability--bayes-in-diagnostics">Problem 2 — Law of total probability &amp; Bayes in diagnostics</h2>
+<p><strong>What it tests:</strong> Partitioning by a latent state (e.g., “diseased/not”), then updating with Bayes.<br>
+<strong>Plan:</strong></p>
+<ul>
+<li>Identify a partition (F_1, \dots, F_n) and an evidence event (E).</li>
+<li>Use (P(E)=\sum_i P(E|F_i)P(F_i)); then Bayes: (P(F_j|E)=\frac{P(E|F_j)P(F_j)}{\sum_i P(E|F_i)P(F_i)}).</li>
+<li>Interpret results in terms of false positives/negatives and base rates.</li>
+</ul>
+<p><strong>Pitfalls:</strong> Using sensitivity/specificity incorrectly; forgetting to normalize posteriors.</p>
+<p><strong>Starter R:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Example structure for diagnostic testing</span>
+prior &lt;- c(D=<span class="hljs-number">0.01</span>, Dc=<span class="hljs-number">0.99</span>)          <span class="hljs-comment"># replace numbers as needed</span>
+sens &lt;- <span class="hljs-number">0.95</span>                         <span class="hljs-comment"># P(positive | D)</span>
+spec &lt;- <span class="hljs-number">0.97</span>                         <span class="hljs-comment"># P(negative | Dc)</span>
+p_pos &lt;- sens*prior[<span class="hljs-string">"D"</span>] + (<span class="hljs-number">1</span>-spec)*prior[<span class="hljs-string">"Dc"</span>]
+post_D_given_pos &lt;- sens*prior[<span class="hljs-string">"D"</span>] / p_pos
+<span class="hljs-comment"># cat(p_pos, post_D_given_pos, sep="</span>
+<span class="hljs-string">")
+</span></div></code></pre>
+<hr>
+<h2 id="problem-3--independence-vs-pairwise-independence">Problem 3 — Independence vs pairwise independence</h2>
+<p><strong>What it tests:</strong> Distinguishing pairwise independence from mutual independence; constructing counterexamples.<br>
+<strong>Plan:</strong></p>
+<ul>
+<li>Show pairwise products equal intersections: (P(E_iE_j)=P(E_i)P(E_j)).</li>
+<li>Check three‑way: (P(E_1E_2E_3)=P(E_1)P(E_2)P(E_3)).</li>
+<li>If a counterexample is needed, use 3 fair coin flips with events “first=second”, “second=third”, “first=third”.</li>
+</ul>
+<p><strong>Pitfalls:</strong> Assuming pairwise independence implies mutual independence (it does not).</p>
+<p><strong>Starter R:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Counterexample generator for pairwise but not mutual independence</span>
+Ω &lt;- expand.grid(x1=c(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>), x2=c(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>), x3=c(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>))
+E12 &lt;- with(Ω, x1==x2)
+E23 &lt;- with(Ω, x2==x3)
+E13 &lt;- with(Ω, x1==x3)
+pE12 &lt;- mean(E12); pE23 &lt;- mean(E23); pE13 &lt;- mean(E13)
+p_pair &lt;- c(E12E23=mean(E12 &amp; E23), E12E13=mean(E12 &amp; E13), E23E13=mean(E23 &amp; E13))
+p_triple &lt;- mean(E12 &amp; E23 &amp; E13)
+<span class="hljs-comment"># Compare to products pE12*pE23 etc., and pE12*pE23*pE13</span>
+</div></code></pre>
+<hr>
+<h2 id="problem-4--monty-hall-conditional-reasoning-vs-simulation">Problem 4 — Monty Hall: conditional reasoning vs simulation</h2>
+<p><strong>What it tests:</strong> Conditional trees, host behavior assumptions, and simulation to verify “switching” advantage.<br>
+<strong>Plan:</strong></p>
+<ul>
+<li>Define host strategy (always opens a goat door, never opens your door, chooses randomly when two goats).</li>
+<li>Compute (P(win \mid stay)) and (P(win \mid switch)) with a tree.</li>
+<li>Validate with simulation.</li>
+</ul>
+<p><strong>Pitfalls:</strong> Ambiguous host behavior; forgetting to condition on the door the host opens.</p>
+<p><strong>Starter R:</strong></p>
+<pre class="hljs"><code><div>set.seed(<span class="hljs-number">631</span>)
+monty_once &lt;- <span class="hljs-keyword">function</span>(host_randomize=<span class="hljs-literal">TRUE</span>){
+  prize &lt;- sample(<span class="hljs-number">1</span>:<span class="hljs-number">3</span>,<span class="hljs-number">1</span>); choice &lt;- sample(<span class="hljs-number">1</span>:<span class="hljs-number">3</span>,<span class="hljs-number">1</span>)
+  goats &lt;- setdiff(<span class="hljs-number">1</span>:<span class="hljs-number">3</span>, prize)
+  openable &lt;- setdiff(<span class="hljs-number">1</span>:<span class="hljs-number">3</span>, choice)
+  openable &lt;- intersect(openable, setdiff(<span class="hljs-number">1</span>:<span class="hljs-number">3</span>, prize))  <span class="hljs-comment"># goats only</span>
+  host &lt;- <span class="hljs-keyword">if</span>(host_randomize) sample(openable, <span class="hljs-number">1</span>) <span class="hljs-keyword">else</span> openable[<span class="hljs-number">1</span>]
+  stay_win &lt;- (choice == prize)
+  switch_choice &lt;- setdiff(<span class="hljs-number">1</span>:<span class="hljs-number">3</span>, c(choice, host))
+  switch_win &lt;- (switch_choice == prize)
+  c(stay=stay_win, <span class="hljs-keyword">switch</span>=switch_win)
+}
+n &lt;- <span class="hljs-number">1e5</span>
+res &lt;- replicate(n, monty_once())
+p_stay &lt;- mean(res[<span class="hljs-string">"stay"</span>,]); p_switch &lt;- mean(res[<span class="hljs-string">"switch"</span>,])
+<span class="hljs-comment"># cat(p_stay, p_switch, sep="</span>
+<span class="hljs-string">")
+</span></div></code></pre>
+<hr>
+<h2 id="problem-5--reliability-networks-under-independence">Problem 5 — Reliability networks under independence</h2>
+<p><strong>What it tests:</strong> Series/parallel systems and complements; using inclusion–exclusion when paths share components.<br>
+<strong>Plan:</strong></p>
+<ul>
+<li>For series: multiply component reliabilities. For parallel: compute complement then complement back.</li>
+<li>If the network has shared components, identify minimal path/cut sets and use inclusion–exclusion or bounds.</li>
+<li>Simulate by sampling component up/down states and checking connectivity.</li>
+</ul>
+<p><strong>Pitfalls:</strong> Treating dependent components as independent; double‑counting in unions of events.</p>
+<p><strong>Starter R:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Example: 3 components where 1 and 2 are in parallel, then in series with 3</span>
+p &lt;- c(p1=<span class="hljs-number">0.9</span>, p2=<span class="hljs-number">0.8</span>, p3=<span class="hljs-number">0.95</span>)
+rel_parallel_12 &lt;- <span class="hljs-number">1</span> - (<span class="hljs-number">1</span>-p[<span class="hljs-string">"p1"</span>])*(<span class="hljs-number">1</span>-p[<span class="hljs-string">"p2"</span>])
+rel_system &lt;- rel_parallel_12 * p[<span class="hljs-string">"p3"</span>]
+
+<span class="hljs-comment"># Monte Carlo for arbitrary networks</span>
+set.seed(<span class="hljs-number">631</span>)
+simulate_reliability &lt;- <span class="hljs-keyword">function</span>(adj, probs, n=<span class="hljs-number">1e5</span>){
+  m &lt;- length(probs)
+  success &lt;- <span class="hljs-number">0</span>
+  <span class="hljs-keyword">for</span>(i <span class="hljs-keyword">in</span> <span class="hljs-number">1</span>:n){
+    up &lt;- rbinom(m, <span class="hljs-number">1</span>, probs)
+    <span class="hljs-comment"># user fills: compute s-t connectivity using up[] and adj matrix</span>
+    <span class="hljs-comment"># success &lt;- success + is_connected(up, adj) </span>
+  }
+  success/n
+}
+</div></code></pre>
+<hr>
+<h2 id="problem-6--conditional-chains--multiplication-rule">Problem 6 — Conditional chains &amp; multiplication rule</h2>
+<p><strong>What it tests:</strong> Breaking complex intersections into a product of conditional probabilities.<br>
+<strong>Plan:</strong></p>
+<ul>
+<li>Use (P(E_1\cdots E_k)=P(E_1)\prod_{i=2}^k P(E_i|E_1\cdots E_{i-1})).</li>
+<li>Model as sequential draws with or without replacement.</li>
+</ul>
+<p><strong>Pitfalls:</strong> Conditioning on the wrong history; forgetting to update counts without replacement.</p>
+<p><strong>Starter R:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Example skeleton: drawing without replacement</span>
+draw_no_replace &lt;- <span class="hljs-keyword">function</span>(N_red, N_white, k){
+  <span class="hljs-comment"># compute P(R1 R2 ... Rk) using a product of conditionals</span>
+  probs &lt;- numeric(k)
+  R &lt;- N_red; W &lt;- N_white; N &lt;- R + W
+  <span class="hljs-keyword">for</span>(i <span class="hljs-keyword">in</span> <span class="hljs-number">1</span>:k){
+    probs[i] &lt;- R / N
+    R &lt;- R - <span class="hljs-number">1</span>; N &lt;- N - <span class="hljs-number">1</span>
+  }
+  prod(probs)
+}
+</div></code></pre>
+<hr>
+<h2 id="problem-7--waiting-times-geometric-distribution">Problem 7 — Waiting times: geometric distribution</h2>
+<p><strong>What it tests:</strong> Memoryless property and computing P(T&gt;t), P(T=t); comparing theory vs simulation.<br>
+<strong>Plan:</strong></p>
+<ul>
+<li>For independent Bernoulli(p) trials, (P(T=t)=(1-p)^{t-1}p).</li>
+<li>Use memorylessness to simplify conditionals, e.g., (P(T&gt;s+t|T&gt;s)=P(T=t)).</li>
+<li>Simulate runs to check.</li>
+</ul>
+<p><strong>Pitfalls:</strong> Confusing geometric “number of trials to first success” with “number of failures before first success”.</p>
+<p><strong>Starter R:</strong></p>
+<pre class="hljs"><code><div>set.seed(<span class="hljs-number">631</span>)
+rgeom1 &lt;- <span class="hljs-keyword">function</span>(n, p){
+  <span class="hljs-comment"># number of trials until first success</span>
+  trials &lt;- rgeom(n, prob=p) + <span class="hljs-number">1</span>
+  trials
+}
+<span class="hljs-comment"># Empirical check</span>
+n &lt;- <span class="hljs-number">1e5</span>; p &lt;- <span class="hljs-number">0.3</span>
+Tn &lt;- rgeom1(n, p)
+<span class="hljs-comment"># mean(Tn); 1/p  # compare</span>
+</div></code></pre>
+<hr>
+<h2 id="problem-8--bayes-with-a-partition-toy-na%C3%AFve-bayes">Problem 8 — Bayes with a partition (toy Naïve Bayes)</h2>
+<p><strong>What it tests:</strong> Posterior computation when features are conditionally independent given a class.<br>
+<strong>Plan:</strong></p>
+<ul>
+<li>Write priors P(C_j). For features X_k, use (P(x|C_j)=\prod_k P(x_k|C_j)) (Naïve Bayes).</li>
+<li>Compute unnormalized posteriors (\tilde{P}(C_j|x)=P(x|C_j)P(C_j)) and then normalize.</li>
+<li>Compare with a simulation that samples classes then features.</li>
+</ul>
+<p><strong>Pitfalls:</strong> Forgetting to renormalize; assuming independence uncritically.</p>
+<p><strong>Starter R:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Toy Naive Bayes</span>
+prior &lt;- c(S=<span class="hljs-number">0.6</span>, H=<span class="hljs-number">0.4</span>)     <span class="hljs-comment"># spam vs ham</span>
+theta &lt;- list(
+  S = c(O=<span class="hljs-number">0.5</span>, <span class="hljs-literal">F</span>=<span class="hljs-number">0.6</span>, M=<span class="hljs-number">0.1</span>),
+  H = c(O=<span class="hljs-number">0.05</span>, <span class="hljs-literal">F</span>=<span class="hljs-number">0.1</span>, M=<span class="hljs-number">0.4</span>)
+)
+x &lt;- c(O=<span class="hljs-number">1</span>, <span class="hljs-literal">F</span>=<span class="hljs-number">1</span>, M=<span class="hljs-number">0</span>)        <span class="hljs-comment"># observed features (1/0)</span>
+
+lik &lt;- sapply(names(prior), <span class="hljs-keyword">function</span>(cls){
+  pr &lt;- theta[[cls]]
+  <span class="hljs-comment"># Bernoulli likelihoods</span>
+  prod(ifelse(x==<span class="hljs-number">1</span>, pr, <span class="hljs-number">1</span>-pr))
+})
+post_unnorm &lt;- lik * prior
+post &lt;- post_unnorm / sum(post_unnorm)
+<span class="hljs-comment"># print(post)</span>
+</div></code></pre>
+<hr>
+<h3 id="deliverables-checklist">Deliverables checklist</h3>
+<ul>
+<li>Clear event definitions and diagrams.</li>
+<li>A short simulation or enumeration to validate each analytic result.</li>
+<li>A sentence interpreting each probability in context.</li>
+</ul>
+
+</body>
+</html>
